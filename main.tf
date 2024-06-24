@@ -100,7 +100,7 @@ module "aft_customizations" {
   providers = {
     aws = aws.aft_management
   }
-  source                                            = "./modules/aft-customizations"
+  source                                            = "git@github.com:phytwo/aft-customizations.git"
   aft_tf_aws_customizations_module_git_ref_ssm_path = local.ssm_paths.aft_tf_aws_customizations_module_git_ref_ssm_path
   aft_tf_aws_customizations_module_url_ssm_path     = local.ssm_paths.aft_tf_aws_customizations_module_url_ssm_path
   aft_tf_backend_region_ssm_path                    = local.ssm_paths.aft_tf_backend_region_ssm_path
@@ -256,4 +256,9 @@ module "aft_ssm_parameters" {
   maximum_concurrent_customizations                           = var.maximum_concurrent_customizations
   github_enterprise_url                                       = var.github_enterprise_url
   aft_metrics_reporting                                       = var.aft_metrics_reporting
+
+  # NewRelic
+  newrelic_api_key    = var.newrelic_api_key
+  newrelic_region     = var.newrelic_region
+  newrelic_account_id = var.newrelic_account_id
 }
